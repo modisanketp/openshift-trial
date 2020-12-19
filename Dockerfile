@@ -1,2 +1,2 @@
 FROM busybox
-CMD /bin/sh -c "while true; do echo test; sleep 5; done"
+CMD /bin/sh -c "while true; do echo sanket; sleep 5; done"
