@@ -1,9 +1,15 @@
-const fs = require("fs");
+const express = require('express')
+const app = express()
+const port = 3000
 
-var msg = process.env.APP_MSG;
-
-console.log(msg);
-
-fs.readFile('/opt/app-root/secure/myapp.sec', 'utf8', function (secerr,secdata) {
-    console.log(secdata);
+app.get('/', (req, res) => {
+  res.send('Hello World!')
 })
+
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`)
+})
+
+
+
+
