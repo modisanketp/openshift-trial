@@ -1,2 +1,7 @@
-FROM busybox
-CMD /bin/sh -c "while true; do echo sanket; sleep 5; done"
+FROM docker.io/node:10
+
+WORKDIR /usr/src/app
+
+COPY app.js .
+
+CMD ["node", "app.js"]
