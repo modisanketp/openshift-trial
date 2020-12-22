@@ -8,6 +8,6 @@ EXPOSE 3000
 
 COPY . .
 
-RUN npm build
+RUN npm install
 
 CMD ["node", "app.js"]
