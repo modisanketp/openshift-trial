@@ -36,9 +36,13 @@ con.connect(function(err) {
     res.send("Unable to connect to db")
   }
   console.log("Connected!");
-  var sql = "select * from myGuests"
+  var sql = "select * from myGuests;"
   con.query(sql, function (err, result) {
-    if (err) throw err;
+    if (err)
+    { 
+        console.log("Unable to execute query.");
+        res.send("Unable to execute query.");
+    }
     console.log("Result: " + result);
     res.send(result);
   });
