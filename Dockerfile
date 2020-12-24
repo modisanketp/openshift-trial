@@ -4,6 +4,8 @@ WORKDIR /usr/src/app
 
 RUN chgrp -R 0 /usr/src & chmod -R u=g /usr/src
 
+RUN touch /tmp/live
+
 EXPOSE 3000
 
 COPY . .
