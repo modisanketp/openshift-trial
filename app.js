@@ -1,5 +1,6 @@
 const express = require('express')
 const fs = require("fs")
+const mysql = require("mysql")
 const app = express()
 const port = 3000
 
@@ -17,6 +18,34 @@ app.get('/', (req, res) => {
   // })
 
   res.send("Hello Sanket !!")
+})
+
+app.get('/myGuests', (req, res) => {
+console.log("loading my guests");
+
+var con = mysql.createConnection({
+  host: process.env.DATABASE_SVC,
+  user: process.env.DATABASE_USER,
+  password: process.env.DATABASE_PASSWORD,
+  database: process.env.DATABASE_NAME
+});
+
+con.connect(function(err) {
+  if (err){ 
+    console.log("Unable to connect DB");
+    res.send("Unable to connect to db")
+  }
+  console.log("Connected!");
+  var sql = "select * from myGuests"
+  con.query(sql, function (err, result) {
+    if (err) throw err;
+    console.log("Result: " + result);
+    res.send(result);
+  });
+});
+
+
+
 })
 
 app.get('/ready', (req, res) => {
